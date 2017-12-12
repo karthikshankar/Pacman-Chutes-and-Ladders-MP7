@@ -39,7 +39,7 @@ int previousoldmonpos = 0;      //Variable to used make sure that the monsters d
 int monstermovcount = 0;     //Keeps track of the row number and which way the monsters move on the gameboard
 int xb, yb, wb, hb;           //Positions of the "play" button displayed
 PFont playFont;           //Font used throughout gameplay
-int decideMenu = 0;        //Variable help user navigate through start and intstruction panels
+int decideMenu = 0;        //Variable help user navigate through start and instruction panels
 int rollcount = 0;         //roll count for each of pacman's rolls
 int monrollcount = 0;         //roll count for each of the monster's roll counts
 
