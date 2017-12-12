@@ -1,6 +1,6 @@
 /**
   * PacmanChutesAndLadders
-  * @author Karthik Shankar
+  * @author Karthik Shankar, Kavi Ravuri
   * @version December 11, 2017
 */
 
@@ -356,7 +356,7 @@ void drawPanels()             //Draw rectangle on the side of the screen
   textSize(14);
   ct = color(255, 10, 10);
   fill(ct);
-  if (pacmanwon)                 //print out winner in the game
+  if (pacmanwon)                 //check winner of game and print if correct
   {
     if (sec%2 == 0)
       fill(51, 255, 204, 220);
@@ -378,7 +378,7 @@ void drawPanels()             //Draw rectangle on the side of the screen
     else
       fill(51, 255, 51, 220);
       textSize(44);
-      text("You Lost, Your time doesn't count", (w/2)*size-105, (h/2)*size - 45);
+      text("You Lost, Your time doesn't count", (w/2)*size-107, (h/2)*size - 40);
       text("MONSTERS WIN!",(w/2)*size-10, (h/2)*size+10);
   }
 }
