@@ -564,7 +564,7 @@ void drawChutes()
     }
     else
     {
-     if (sec%2 == 0)              //Make sure to have flashing chutes when pacman enters
+     if (sec%2 == 0)              //Make sure to have flashing chutes when the pacman enters
         stroke(c2);
       else
         stroke(c3);
