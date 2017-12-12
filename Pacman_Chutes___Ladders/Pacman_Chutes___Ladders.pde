@@ -688,7 +688,7 @@ void draw()
   drawPanels();
   drawPanelSide();
 
-  checkPacmanLadderChute();        //Draw obstacle and check if Pacman is hitting them
+  checkPacmanLadderChute();        //Check if Pacman is hitting them
 
   drawPacman();
 
