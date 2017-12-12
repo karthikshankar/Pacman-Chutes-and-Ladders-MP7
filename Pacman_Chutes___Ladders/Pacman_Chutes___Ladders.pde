@@ -378,7 +378,7 @@ void drawPanels()             //Draw rectangle on the side of the screen
     else
       fill(51, 255, 51, 220);
       textSize(44);
-      text("You Lost, Your time doesn't count", (w/2)*size-100, (h/2)*size - 40);
+      text("You Lost, Your time doesn't count", (w/2)*size-105, (h/2)*size - 45);
       text("MONSTERS WIN!",(w/2)*size-10, (h/2)*size+10);
   }
 }
