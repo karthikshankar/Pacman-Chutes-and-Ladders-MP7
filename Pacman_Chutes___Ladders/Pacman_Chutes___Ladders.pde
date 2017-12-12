@@ -1,7 +1,7 @@
 /**
   * PacmanChutesAndLadders
   * @author Karthik Shankar, Kavi Ravuri
-  * @version December 11, 2017
+  * @version December 11, 2017 
 */
 
 int w = 32;          //This is the width variable that holds the overall width of the game board
