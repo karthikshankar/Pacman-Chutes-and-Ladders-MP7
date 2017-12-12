@@ -55,9 +55,9 @@ void resetboard()
    pacmanwon = false;                     //Reset all variables to false or to 0
    buttontimeout = false;
    previousoldmonpos = 0;
-   monrollcount = 0;                       
+   monrollcount = 0;
    rollcount = 0;
-   
+
   for(int i = 0; i < monsterpos.length; i++)
   {
     int randommonstervar = (int)(random(2,(w-7)));            //Generate a random starting position for the monster
@@ -75,7 +75,7 @@ void resetboard()
     monsterpos[i][3] = 0;  // toggle to indicate whether monster is alive
     previousoldmonpos = randommonstervar;                 //set the old previous position to the next one to check the next time
   }
-  
+
 }
 
 /**
@@ -97,7 +97,7 @@ void setupLadders()
     s = (int)(random(1, 10));
     int moveLadPos = (int)(random(1,6));      //Make sure that each ladder has a different size and orientation
 
-    if ((i%2) > 0)    
+    if ((i%2) > 0)
       r1 = -r;
     else
       r1 = r;
@@ -111,7 +111,7 @@ void setupLadders()
     ladarr[i][6] = ladarr[i][2] + 1;
     ladarr[i][7] = ladarr[i][3];
     ladarr[i][8] = 0;
-    
+
     //check to make sure that the positions go above or below the limits
     if(ladarr[i][0] > w-1)
       ladarr[i][0] = w-1;
@@ -134,7 +134,7 @@ void setupLadders()
       ladarr[i][4] = w-(moveLadPos-1);
     }
     if(ladarr[i][4] < 0)            //Check to see if ladder positions go below 0
-      ladarr[i][4] = 1; 
+      ladarr[i][4] = 1;
     if(ladarr[i][5] > h-1)
       ladarr[i][5] = h-1;
     if(ladarr[i][6] > w)
@@ -151,7 +151,7 @@ void setupLadders()
       ladarr[i][7] = h-1;
 
     x += xdiff;          //Increment x so that the ladder positions move across the grids
-    y += ydiff; 
+    y += ydiff;
   }
 }
 
@@ -163,7 +163,7 @@ void setupChutes()
   int x, y;
   int xdiff=3;
   int r, s, change;
-  
+
   x = 4;
   for (int i = 0; i < chutearr.length; i++)
   {
@@ -225,7 +225,7 @@ void setupChutes()
 }
 
 /**
-  * This method is used at the start of my game. This is the method where I set up the 
+  * This method is used at the start of my game. This is the method where I set up the
   * images for my monsters and screenshots in the instructions panel.
   */
 void setup()
@@ -237,10 +237,10 @@ void setup()
   dinky = loadImage("dinky.png");
 
   playFont = createFont("ACaslonPro-Bold", 34);
-  
+
   setupLadders();
   setupChutes();
-  
+
   for(int i = 0; i < monsterpos.length; i++)
   {
     int randommonstervar = (int)(random(2,(w-7)));
@@ -270,23 +270,23 @@ void drawPanelSide()
   text("Chutes & Ladders", 14, 66);            //Print out all welcome message on panel
   text("Welcome to Pacman", 7, 645);
   text("Chutes & Ladders", 14, 661);
-  
-  fill(255);  
-  text("Karthik Shankar &", 16, 300); 
-  text("Kavi Ravuri", 38, 316); 
-  text("CS 125: MP7", 38, 350); 
-} 
+
+  fill(255);
+  text("Karthik Shankar &", 16, 300);
+  text("Kavi Ravuri", 38, 316);
+  text("CS 125: MP7", 38, 350);
+}
 
 /**
  * Draw time method to display users' time taken to complete game
 */
-void drawTime() 
+void drawTime()
 {
   textSize(16);
   fill(0, 255, 0, 200);
-  
+
   if(!pacmanwon && !monsterwon)      //Check to see if game has ended
-  { 
+  {
     timer = millis() - start;      //Get seconds, time and minutes to display
     mil = (timer%100);
     seconds = (timer/1000);
@@ -300,7 +300,7 @@ void drawTime()
   * of the game and I also draw the play button, where the play is displayed and where
   * climbing and sliding notifications are shown.
   */
-void drawPanels()             //Draw rectangle on the side of the screen 
+void drawPanels()             //Draw rectangle on the side of the screen
 {
   int sec = millis()/450;
   fill(0, 0, 102);
@@ -308,19 +308,19 @@ void drawPanels()             //Draw rectangle on the side of the screen
   stroke(240, 130, 30);
   rect(0, 0, (wext*size), (h*size));
   rect((wext+w)*size, 0, (wext*size), (h*size));
-  
+
   // draw play button
   xb =  (wext+w)*size + 20;
   yb = 10*size;
   wb = 3*size;
   hb = size;
-  color c = color(102, 255, 255);  
-  fill(c); 
-  noStroke();  
-  rect (xb, yb, wb, hb, 8);                
-  
+  color c = color(102, 255, 255);
+  fill(c);
+  noStroke();
+  rect (xb, yb, wb, hb, 8);
+
   if (pacmanwon || monsterwon)  //Check to see if timer is over if the game is won by either the pacman or the monsters
-  {           
+  {
     checkTimer();
     drawTime();
   }
@@ -328,7 +328,7 @@ void drawPanels()             //Draw rectangle on the side of the screen
   fill(ct);
   textFont(playFont);
   textSize(16);
-  
+
   if (pacmanclimbing)
     text("Climbing", xb+11, yb+23);
   else if (pacmansliding)
@@ -346,13 +346,13 @@ void drawPanels()             //Draw rectangle on the side of the screen
   text("Chutes & Ladders", 1125, 66);
   text("Welcome to Pacman", 1118, 645);
   text("Chutes & Ladders", 1125, 661);
-  
+
   fill(255);
-  text("Controls", 1130, 120);          
+  text("Controls", 1130, 120);
   textSize(11);
   text("Click 'Play': To move", 1118, 146);
   text("Press 'm' :  Back to menu", 1118, 162);       //Print out controls to user during game play
-    
+
   textSize(14);
   ct = color(255, 10, 10);
   fill(ct);
@@ -362,7 +362,7 @@ void drawPanels()             //Draw rectangle on the side of the screen
       fill(51, 255, 204, 220);
     else
       fill(51, 255, 51, 220);
-      textSize(48);
+      textSize(47);
       String s = "" + minutes%60;
       String s3 = "" + seconds%60;
       String s4 = "" + mil%60;
@@ -389,14 +389,14 @@ void displayMenu()
   int osx = (wext*size);
   int osy = size/2;
   int sec = millis()/450;
-  
+
   if(keyCode == ENTER || keyCode == RETURN)             //print the enter and return options to the start panel
   {
     decideMenu = 2;  // move to play panel
   }
-  
+
   if(decideMenu == 0)              //Print this out, when enter is not pressed
-  { 
+  {
     fill(51, 0, 102);
     stroke(240, 130, 30);
     strokeWeight(4);
@@ -423,7 +423,7 @@ void displayMenu()
   {
     fill(0, 0, 0, 0);
     rect(0, 0, 0, 0);         //Otherwise do not draw anything
-  } 
+  }
 }
 
 /**
@@ -436,8 +436,9 @@ void drawTitleAnimation()
   int sec = millis()/100;             //Draw title photos and on the title screen including a chute and a ladder and pacman moving his mouth
   color c1 = color(255, 0, 51);
   color c2 = color(102, 102, 0);
-  
+
   fill(0);
+
   stroke(10, 255, 10, 230);
   rect(100, 120, 975, 480);
   stroke(0, 51, 102);
@@ -452,7 +453,7 @@ void drawTitleAnimation()
     fill(255, 255, 0, 240);
     ellipse(270, 400, 200, 200);
   }
-  
+
   stroke(c1);
   strokeWeight(23);
   noFill();
@@ -465,7 +466,7 @@ void drawTitleAnimation()
   {
     int x = ((y-170)*(90))/(380) +500;
     int xp = ((y-170) * (90))/(380) + 600;
-    
+
     line(x,y,xp,y);
   }
 }
@@ -477,9 +478,9 @@ void drawTitleAnimation()
 void drawGrid()
 {
   int sw = wext*size;
-  
+
  background(0);
- 
+
   strokeWeight(1);
   for (int i = 0; i < w; i++)
   {
@@ -503,9 +504,9 @@ void drawPacman()
   if (buttontimeout)
     checkTimer();
     drawTime();
-    
+
   stroke(0, 51, 102);
-  
+
   fill(255, 255, 0);
   strokeWeight(2);
   if (sec%2 == 1)
@@ -520,27 +521,27 @@ void drawPacman()
 }
 
 /**
-  * This is the method that I use to draw the monsters, after checking to make sure that they 
+  * This is the method that I use to draw the monsters, after checking to make sure that they
   * are alive. I also tint their images, to make sure they show up well on the screen.
  */
 void drawMonsters()
 {
   stroke(0);
-  tint(255);  
+  tint(255);
   if (monsterpos[0][3] == 0)              //Only draw the monsters if they are alive and that number is held in the 4th position of the monster array
     image(blinky, (monsterpos[0][0]*size)+mxoff, monsterpos[0][1]*size-2, 33, 33);
-    
+
   tint(100, 255, 255);
   if (monsterpos[1][3] == 0)
     image(clyde, (monsterpos[1][0]*size)+mxoff, monsterpos[1][1]*size, 30, 30);
-    
+
    tint(250, 200, 200);
   if (monsterpos[2][3] == 0)
     image(dinky, (monsterpos[2][0]*size)+mxoff, monsterpos[2][1]*size+1, 29, 29);
 }
 
 /**
-  * This is the method where I draw the chutes, based on the positions that 
+  * This is the method where I draw the chutes, based on the positions that
   * I had in the array.
   */
 void drawChutes()
@@ -551,9 +552,9 @@ void drawChutes()
   color c2 = color(102, 255, 102, 200);             //Get each of the colors to print out the colors of the ladder and flashing colors
   color c3 = color(204,0, 204, 200);
   int sec = millis()/500;
-  
+
   strokeWeight(12);
-  noFill(); 
+  noFill();
 
   for (int i = 0;i < chutearr.length;i++)
   {
@@ -584,7 +585,7 @@ void drawLadders()
   color c2 = color(102, 255, 102, 200);
   color c3 = color(204,0, 204, 200);
   int sec = millis()/500;
- 
+
   noFill();
   stroke(c1);
   strokeWeight(5);
@@ -601,7 +602,7 @@ void drawLadders()
       else
         stroke(c3);
     }
-    line(ladarr[i][0]*size+osx, ladarr[i][1]*size+osy, ladarr[i][2]*size+osx, ladarr[i][3]*size+osy);        
+    line(ladarr[i][0]*size+osx, ladarr[i][1]*size+osy, ladarr[i][2]*size+osx, ladarr[i][3]*size+osy);
     line(ladarr[i][4]*size+osx, ladarr[i][5]*size+osy, ladarr[i][6]*size+osx, ladarr[i][7]*size+osy);
   }
 
@@ -612,7 +613,7 @@ void drawLadders()
     {
       int x = (((y-ladarr[i][1])*size*(ladarr[i][2] - ladarr[i][0]))/(ladarr[i][3] - ladarr[i][1])) + ladarr[i][0]*size;
       int xp = (((y-ladarr[i][5])*size*(ladarr[i][6] - ladarr[i][4]))/(ladarr[i][7] - ladarr[i][5])) + ladarr[i][4]*size;
-      
+
       if (ladarr[i][8] == 0)
         stroke(c1);                    //Make sure to have flashing ladders when pacman enters
       else
@@ -630,7 +631,7 @@ void drawLadderBoxes()
 {
   int osx = (wext*size);
   int osy = size/2;
-  
+
   for(int i = 0; i < ladarr.length; i++)
   {
     fill(255, 255, 0, 140);
@@ -648,7 +649,7 @@ void drawChuteBoxes()
 {
   int osx = (wext*size);
   int osy = size/2;
-  
+
   for(int i = 0; i < chutearr.length; i++)
   {
     fill(255, 0, 0, 190);
@@ -667,38 +668,38 @@ void draw()
   {
     decideMenu = 0;
   }
-  
+
   //Draw checkerboard for the game
   drawGrid();
-  
+
   drawChutes();           //Draw grid, chutes, ladder and each of the boxes
-  
+
   drawLadders();                  //Call all methods to display the game
- 
+
   highlightPositions();
-  
+
   drawLadderBoxes();
-  
+
   drawChuteBoxes();
- 
+
   // Draw buttons
   drawPanels();
   drawPanelSide();
- 
+
   checkPacmanLadderChute();        //Draw obstacle and check if Pacman is hitting them
-  
+
   drawPacman();
 
   drawMonsters();
-  
+
   displayMenu();                      //Call last so that we can display the menu panel last
-  
+
   if(pacmanwon || monsterwon)
       allowExit();      //Check if user wants to exit or not
 }
 
 /**
-  * This is the method where I allow the user to exit at the end of the 
+  * This is the method where I allow the user to exit at the end of the
   * game if the user hits 'e'. It also pushes pacman back to the start of the board
   * when the game is over.
   */
@@ -714,7 +715,7 @@ void allowExit()
     textSize(12);
     fill(255, 255, 0);
     text("or restart button below", 1119, 275);
-  
+
     if(key == 'e')
       exit();
   }
@@ -770,15 +771,15 @@ void checkTimer()
       pacmanclimbing = false;
       pacmansliding = false;
       buttontimeout = false;
-      
+
       for (int i=0;i < ladarr.length;i++)
         ladarr[i][8] = 0;
       for (int i=0;i < chutearr.length;i++)
         chutearr[i][8] = 0;
     }
  }
- else 
- {  
+ else
+ {
    if (diff >= gameendtimer)
      buttontimeout = false;
  }
@@ -823,7 +824,7 @@ void checkPacmanLadderChute()
     pacmandirection = 0;
   else
     pacmandirection = 1;
-  
+
 }
 
 /**
@@ -832,16 +833,16 @@ void checkPacmanLadderChute()
  */
 void moveMonsters()
 {
-  
+
     for(int i = 0; i < monsterpos.length; i++)
     {
       if (monsterpos[i][3] == 1)
         continue;
-      
+
       int random = (int)(random(1, 10));
       monrollcount = random;
       int newxpos;
-    
+
       if (monsterpos[i][2] > 0)  // monster is on an odd line
       {
         newxpos = monsterpos[i][0] - random;
@@ -850,7 +851,7 @@ void moveMonsters()
           if (monsterpos[i][1] >= 1)
           {
             monsterpos[i][1]--;
-            monsterpos[i][2] = 0;                            
+            monsterpos[i][2] = 0;
             monsterpos[i][0] = abs(newxpos);
           }
           else
@@ -884,8 +885,8 @@ void moveMonsters()
         else
           monsterpos[i][0] = newxpos;
       }
-  } 
-}  
+  }
+}
 
 /**
   * This method moves pacman around the gameboard from 1-6 steps ahead of him
@@ -944,7 +945,7 @@ void movePacman()
 /**
   * This method checks to see if the button has been clicked by the user.
   */
-boolean clickedInButton()           
+boolean clickedInButton()
 {
   if (buttontimeout)
   {
@@ -957,7 +958,7 @@ boolean clickedInButton()
   {
     if (monsterwon || pacmanwon)
       resetboard();
-    return true;  
+    return true;
   }
   return false;
 }
@@ -975,7 +976,7 @@ void mouseReleased()
   strokeWeight(1);
   fill(255, 255, 0, 100);
   rect(xb+2, yb+4, 85, 22);
-  movePacman();                                
+  movePacman();
   moveMonsters();
 }
 
