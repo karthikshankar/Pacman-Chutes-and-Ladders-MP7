@@ -366,10 +366,10 @@ void drawPanels()             //Draw rectangle on the side of the screen
       String s = "" + minutes%60;
       String s3 = "" + seconds%60;
       String s4 = "" + mil%60;
-      text("You won! Time: " + s + ":" + s3 + ":" + s4, (w/2)*size, (h/2)*size - 40);
-      text("PACMAN WINS!", (w/2)*size, (h/2)*size+10);
-      text("Check the leaderboard at:", (w/2)*size, (h/2)*size+40);
-      text("leaderboard123.github.io", (w/2)*size, (h/2)*size+80);
+      text("You won! Time: " + s + ":" + s3 + ":" + s4, (w/2)*size-37, (h/2)*size - 40);
+      text("PACMAN WINS!", (w/2)*size-13, (h/2)*size+20);
+      text("Check the leaderboard at:", (w/2)*size-25, (h/2)*size+80);
+      text("leaderboard123.github.io", (w/2)*size-22, (h/2)*size+140);
   }
   else if (monsterwon)
   {
@@ -378,8 +378,8 @@ void drawPanels()             //Draw rectangle on the side of the screen
     else
       fill(51, 255, 51, 220);
       textSize(44);
-      text("You Lost, Time doesn't count", (w/2)*size, (h/2)*size - 40);
-      text("MONSTERS WIN!",(w/2)*size, (h/2)*size+10);
+      text("You Lost, Your time doesn't count", (w/2)*size-60, (h/2)*size - 40);
+      text("MONSTERS WIN!",(w/2)*size-10, (h/2)*size+10);
   }
 }
 
